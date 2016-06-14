@@ -1,0 +1,31 @@
+﻿Build started 14/06/2016 11:25:45 AM.
+     1>Project "C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Sudoku\Sudoku.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Sudoku.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Sudoku.cpp
+         Sudoku.cpp
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\utils.cpp(70): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(19): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(32): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\highscore.cpp(42): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\highscore.cpp(49): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\highscore.cpp(59): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\sudoku.cpp(17): warning C4244: 'initializing' : conversion from 'time_t' to 'int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\sudoku.cpp(48): warning C4244: 'initializing' : conversion from 'time_t' to 'int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\sudoku.cpp(88): warning C4018: '<' : signed/unsigned mismatch
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Debug\Sudoku.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Debug\Sudoku.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Debug\Sudoku.lib" /MACHINE:X86 Debug\Board.obj
+         Debug\DumbBoard.obj
+         Debug\Highscore.obj
+         Debug\Piece.obj
+         Debug\PIt.obj
+         Debug\Position.obj
+         Debug\PotentialValue.obj
+         Debug\stdafx.obj
+         Debug\Sudoku.obj
+         Debug\Utils.obj
+         Sudoku.vcxproj -> C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Debug\Sudoku.exe
+     1>Done Building Project "C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Sudoku\Sudoku.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:05.54
