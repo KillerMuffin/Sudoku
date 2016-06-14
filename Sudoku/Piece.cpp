@@ -8,6 +8,9 @@ public:
 	int value;
 	bool locked;
 
+	Piece * left;
+	Piece * right;
+
 	Piece(int x, int y, int value){
 		this->x = x;
 		this->y = y;

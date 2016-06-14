@@ -4,12 +4,14 @@
 using namespace std;
 
 Board::Board(int size, double difficulty) : DumbBoard(size){
+	//Seed random for use in generateBoard later
 	srand(time(NULL));
 	this->size = size;
 	this->difficulty = difficulty;
 	generateBoard();
 }
 
+//Check if a value can be put in a square (only checks rows and cols)
 bool Board::canPut(int x, int y, int value){
 	for(int y = 0; y < size; y++){
 		if(getVAt(x, y) == value){
@@ -24,108 +26,110 @@ bool Board::canPut(int x, int y, int value){
 	return true;
 }
 
+//Prints the board
 void Board::print(){
-	printLine((size + 1) * 4);
+	//Print the first line, in green
+	printLine((size + 1) * 4, 10);
+	//Loop through the entire grid
 	for(int x = 0; x < size; x++){
 		for(int y = 0; y < size; y++){
+			//Get the piece at "x" and "y"
 			Piece * p = getAt(x,y);
 			if(p == nullptr){
-				printCell(' ');
+				//If the piece does not exist, print an empty cell.
+				//If it is a third line, color green
+				printCell(' ', (y%3 == 0) ? 10 : 15, 15);
 			}else{
-				printCell((char)(48+p->value));
+				//If the piece does exist, print the number
+				//If it is a third line, color green
+				//If the piece is locked (i.e. cannot be replaced), make magenta
+				printCell((char)(48+p->value), (y%3 == 0) ? 10 : 15, (p->locked) ? 13 : 15);
 			}
 		}
-		printCell((char)(48+x+1));
+		//Print the index number
+		printCell((char)(48+x+1), 10, 11);
 		cout << endl;
-		printLine((size + 1) * 4);
+		//Print the line. If it is the third line, color green
+		printLine((size + 1) * 4, ((x + 1)%3 == 0) ? 10 : 15);
 	}
+	//Print the index letters
 	for(int i = 0; i < size; i++){
-		printCell((char)(65+i));
+		printCell((char)(65+i), (i%3 == 0) ? 10 : 15, 11);
 	}
+	//Print the last line
+	Utils::changeColor(10);
 	cout << " |" << endl;
+	Utils::changeColor(15);
 }
-void Board::printLine(int size){
+//Print a line of size <size> and color <color>
+void Board::printLine(int size, int color){
+	Utils::changeColor(color);
 	for(int i = 0; i < size; i++){
 		cout << '-';
 	}
 	cout << endl;
+	Utils::changeColor(15);
 }
-void Board::printCell(char c){
-	cout << " | " << c;
+//Print a cell ( | c )
+void Board::printCell(char c, int line, int cc){
+	Utils::changeColor(line);
+	cout << " | ";
+	Utils::changeColor(cc);
+	cout << c;
+	//Reset color
+	Utils::changeColor(15);
 }
 
+//Generate a board
 void Board::generateBoard(){
+	//Populate a vector with numbers 1 to 9
 	vector<int> nums;
 	for(int i = 1; i <= size; i++){
 		nums.push_back(i);
 	}
+	//Shuffle the vector
 	random_shuffle(nums.begin(), nums.end());
 
-	int pos = 0;
-	for(int y = 0; y < size/3; y++){
-		for(int x = 0; x < size/3; x++){
-			if(x == 2 && y == 2){
-				continue;
-			}
-			for(int yg = 0; yg < size/3; yg++){
-				for(int xg = 0; xg < size/3; xg++){
-					setAt((x*3)+xg, (y*3)+yg, nums[pos], true);
-					pos++;
-					if(pos > 8){pos = 0;}
-				}
-			}
-			pos+=3;
-			if(pos > 8){pos-=8;}
-		}
-		pos+=1;
-		if(pos > 8){pos = 0;}
+	PatternIterator pi = PatternIterator(1,4);
+	switch(rand() % 4){
+	case(0):
+		pi = PatternIterator(1,1);
+		break;
+	case(1):
+		pi = PatternIterator(4,1);
+		break;
+	case(2):
+		pi = PatternIterator(2,2);
+		break;
 	}
+
+	for(int x = 0; x < size; x++){
+		for(int y = 0; y < size; y++){
+			setAt(x,y,nums[pi.nextCell()],true);
+		}
+		pi.nextRow();
+	}
+
+	//Shuffle and remove some percentage of the pieces
 	random_shuffle(pieces.begin(), pieces.end());
 	pieces.erase(pieces.begin(), pieces.begin() + (pieces.size() * difficulty));
 }
-void Board::genChunk(int offset_x, int offset_y, map<int, vector<int>> * posx, map<int, vector<int>> * posy){
-	bool failed = true;
-	vector<Piece> local_pieces;
-	while(failed){
-		failed = false;
-		vector<int> nums;
+//Generate a chunk (3x3 grid) of the board
+void Board::genChunk(int offset_x, int offset_y){
+	vector<int> nums;
+	for(int i = 1; i <= size; i++){
+		nums.push_back(i);
+	}
 
-		for(int i = 1; i <= size; i++){
-			nums.push_back(i);
-		}
+	random_shuffle(nums.begin(), nums.end());
 
-		random_shuffle(nums.begin(), nums.end());
-
-		for(int x = 0; x < 3; x++){
-			for(int y = 0; y < 3; y++){
-				bool run = true;
-				int pos = 0;
-				int count = 0;
-				while(run){
-					if(canPut((offset_x * 3) + x, (offset_y * 3) + y, nums[pos])){
-						run = false;
-						//For some strange reason the program throws an vector subscript error unless I add 10 here???
-						local_pieces.push_back(Piece((offset_x * 3) + x, (offset_y * 3) + y, nums[pos]));
-						nums.erase(nums.begin() + pos);
-					}else{
-						pos++;
-						if(pos >= nums.size()){
-							pos = 0;
-						}
-						count++;
-						if(count > nums.size()+5){
-							run = false;
-							x = 100;
-							y = 100;
-							failed = true;
-							local_pieces.empty();
-						}
-					}
-				}
-			}
+	int index = 0;
+	for(int x = (offset_x*3); x < (offset_x*3)+3; x++){
+		for(int y = (offset_y*3); y < (offset_y*3)+3; y++){
+			setAt(x,y,nums[index],true);
+			index++;
 		}
 	}
-	pieces.insert(pieces.end(), local_pieces.begin(), local_pieces.end());
 }
 map<int, vector<int>> Board::populateVector(){
 	map<int, vector<int>> r;
@@ -140,10 +144,27 @@ map<int, vector<int>> Board::populateVector(){
 	return r;
 }
 
-bool Board::solve(DumbBoard db){
+pair<DumbBoard, bool> Board::solve(DumbBoard db){
 	if(db.complete()){
-		return true;
+		return pair<DumbBoard, bool>(db, true);
 	}else{
+		for(int x = 0; x < size; x++){
+			for(int y = 0; y < size; y++){
+				for(int i = 1; i <= size; i++){
+					if(db.legalPut(x,y,i)){
+						db.setAt(x,y,i,true);
 
+						pair<DumbBoard, bool> rdb = solve(db);
+						if(rdb.second == true){
+							return rdb;
+						}
+
+						db.removeAt(x,y);
+					}
+				}
+			}
+		}
 	}
+
+	return pair<DumbBoard, bool>(db, false);
 }

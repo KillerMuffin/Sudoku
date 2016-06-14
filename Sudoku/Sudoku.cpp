@@ -108,26 +108,33 @@ int _tmain(int argc, _TCHAR* argv[])
 		cout << "Failed to open file. Continuing anyway..." << endl;
 	}
 	Utils::clp();
+	
+	while(true){
+		Utils::cls();
 
-	cout << "Select difficulty:" << endl;
-	cout << "[0] High Scores" << endl;
-	cout << "[1] Easy" << endl;
-	cout << "[2] Medium" << endl;
-	cout << "[3] Hard" << endl;
-	string in = "";
-	cin >> in;
+		cout << "Select difficulty:" << endl;
+		cout << "[0] Exit" << endl;
+		cout << "[1] High Scores" << endl;
+		cout << "[2] Easy" << endl;
+		cout << "[3] Medium" << endl;
+		cout << "[4] Hard" << endl;
+		string in = "";
+		cin >> in;
 
-	if(in == "0"){
-		showHighscore();
-	}else if(in == "1"){
-		Utils::cls();
-		Sudoku(0.5);
-	}else if(in == "2"){
-		Utils::cls();
-		Sudoku(0.75);
-	}else{
-		Utils::cls();
-		Sudoku(0.9);
+		if(in == "0"){
+			exit(0);
+		}else if(in == "1"){
+			showHighscore();
+		}else if(in == "2"){
+			Utils::cls();
+			Sudoku(0.5);
+		}else if(in == "3"){
+			Utils::cls();
+			Sudoku(0.75);
+		}else{
+			Utils::cls();
+			Sudoku(0.9);
+		}
 	}
 
 	return 0;

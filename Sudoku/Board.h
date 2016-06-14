@@ -1,9 +1,11 @@
 #pragma once
 #include "stdafx.h"
+#include "Utils.cpp"
 #include "DumbBoard.h"
 #include <string>
 #include <vector>
 #include "Piece.cpp"
+#include "PIt.h"
 #include <iostream>
 #include <cstdlib>
 #include <algorithm>
@@ -12,6 +14,7 @@
 
 using namespace std;
 
+//An extension of DumbBoard that contains generation and business logic
 class Board : public DumbBoard{
 public:
 	double difficulty;
@@ -22,13 +25,13 @@ public:
 
 	void print();
 private:
-	void printLine(int size);
-	void printCell(char c);
+	void printLine(int size, int color);
+	void printCell(char c, int line, int cc);
 
 	void generateBoard();
-	void genChunk(int offset_x, int offset_y, map<int, vector<int>> * posx, map<int, vector<int>> * posy);
+	void genChunk(int offset_x, int offset_y);
 
-	bool solve(DumbBoard b);
+	pair<DumbBoard, bool> solve(DumbBoard b);
 
 	map<int, vector<int>> populateVector();
 };

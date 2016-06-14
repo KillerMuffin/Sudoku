@@ -51,6 +51,9 @@
     <ClInclude Include="DumbBoard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PIt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -75,6 +78,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DumbBoard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PotentialValue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PIt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
