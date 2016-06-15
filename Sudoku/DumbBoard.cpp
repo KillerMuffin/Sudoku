@@ -200,6 +200,17 @@ bool DumbBoard::usedInGrid(int x, int y, int v){
 	return false;
 }
 
+Position DumbBoard::findBlank(){
+	for(int x = 0; x < size; x++){
+		for(int y = 0; y < size; y++){
+			if(getAt(x,y) == nullptr){
+				return Position(x,y);
+			}
+		}
+	}
+	return Position(-1,-1);
+}
+
 DumbBoard DumbBoard::clone(){
 	DumbBoard ret = DumbBoard(size);
 	for(int i = 0; i < pieces.size(); i++){

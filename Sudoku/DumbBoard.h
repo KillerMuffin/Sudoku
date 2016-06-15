@@ -13,7 +13,13 @@
 
 using namespace std;
 
-//A class for storing a board and its values, little else
+/**
+	DumbBoard handles the Model part of the Model-View-Controller relationship.
+	It holds some basic business logic, but is primarily just for holding the
+	values of the board.
+**/
+
+//A class for storing a board and its values
 class DumbBoard{
 public:
 	int size;
@@ -34,6 +40,9 @@ public:
 	//Check if the board is complete
 	bool complete();
 	bool legalPut(int x, int y, int v);
+
+	//Find a blank position
+	Position findBlank();
 
 	DumbBoard clone();
 private:

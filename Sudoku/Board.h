@@ -14,6 +14,12 @@
 
 using namespace std;
 
+/**
+	Board is the Controller in the Model-View-Controller relationship.
+	It holds the majority of the business logic for the board, including
+	generation and display.
+**/
+
 //An extension of DumbBoard that contains generation and business logic
 class Board : public DumbBoard{
 public:
@@ -32,9 +38,5 @@ private:
 	void removeRandom(double percent);
 	void findSingleSolution(int max_remove);
 
-	void genChunk(int offset_x, int offset_y);
-
 	pair<DumbBoard, int> solve(DumbBoard b);
-
-	map<int, vector<int>> populateVector();
 };

@@ -118,72 +118,55 @@ void Board::removeRandom(double percent){
 	pieces.erase(pieces.begin(), pieces.begin() + (pieces.size() * percent));
 }
 
+//Removes pieces until a certain threshold has been reached, or there is more than one solution
 void Board::findSingleSolution(int max_remove){
+	//Shuffle pieces
 	random_shuffle(pieces.begin(), pieces.end());
 
+	//Number removed
 	int removed = 0;
-	int solve_amount = 0;
 
-	while(solve_amount < 2 && removed <= max_remove){
+	while(removed <= max_remove){
+		//Store first so changes can be reverted
+		Piece temp = pieces[0];
+		//Erase at start of vector
 		pieces.erase(pieces.begin(), pieces.begin() + 1);
 		removed++;
 
+		//Check number of solutions
 		pair<DumbBoard, int> solution = solve(clone());
+		//If more than one solution, undo last and end
 		if(solution.second > 1){
+			pieces.push_back(temp);
 			return;
 		}
 	}
 }
 
-//Generate a chunk (3x3 grid) of the board
-void Board::genChunk(int offset_x, int offset_y){
-	vector<int> nums;
-	for(int i = 1; i <= size; i++){
-		nums.push_back(i);
-	}
-
-	random_shuffle(nums.begin(), nums.end());
-
-	int index = 0;
-	for(int x = (offset_x*3); x < (offset_x*3)+3; x++){
-		for(int y = (offset_y*3); y < (offset_y*3)+3; y++){
-			setAt(x,y,nums[index],true);
-			index++;
-		}
-	}
-}
-map<int, vector<int>> Board::populateVector(){
-	map<int, vector<int>> r;
-	for(int i = 0; i < size; i++){
-		vector<int> v;
-		for(int j = 0; j < size; j++){
-			v.push_back(j);
-		}
-		r.insert(pair<int, vector<int>>(i, v));
-	}
-
-	return r;
-}
-
+//Solves the board
 pair<DumbBoard, int> Board::solve(DumbBoard db){
+	//If the board is complete, return the board
 	if(db.complete()){
 		return pair<DumbBoard, int>(db, 1);
-	}else{
-		for(int x = 0; x < size; x++){
-			for(int y = 0; y < size; y++){
-				for(int i = 1; i <= size; i++){
-					if(db.legalPut(x,y,i)){
-						db.setAt(x,y,i,true);
+	}
 
-						pair<DumbBoard, bool> rdb = solve(db);
-						if(rdb.second == true){
-							return rdb;
-						}
+	//Find the next blank piece
+	Position p = db.findBlank();
+	//This theoretically should never happen, but is here just in case
+	if(p.x == -1 && p.y == -1){
+		return pair<DumbBoard, int>(db, 1);
+	}
 
-						db.removeAt(x,y);
-					}
-				}
+	for(int i = 1; i <= 9; i++){
+		if(db.legalPut(p.x, p.y, i)){
+			db.setAt(p.x, p.y, i, false);
+
+			pair<DumbBoard, int> ret = solve(db);
+			if(ret.second > 0){
+				return ret;
 			}
+
+			db.removeAt(p.x, p.y);
 		}
 	}
 

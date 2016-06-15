@@ -9,6 +9,11 @@
 #include "Utils.cpp"
 #include "Highscore.cpp"
 
+/**
+	Sudoku handles the view in the Model-View-Controller relationship.
+	It holds the interation and controlling code.
+**/
+
 class Sudoku{
 public:
 	Sudoku(double difficulty){
@@ -97,6 +102,7 @@ void showHighscore(){
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	//Display the intro screen
 	ifstream intro ("intro.txt");
 	if(intro.is_open()){
 		string line;
@@ -109,6 +115,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	Utils::clp();
 	
+	//Display the menu screen
 	while(true){
 		Utils::cls();
 

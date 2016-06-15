@@ -1,7 +1,17 @@
-﻿Build started 15/06/2016 1:13:33 PM.
+﻿Build started 15/06/2016 2:54:42 PM.
      1>Project "C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Sudoku\Sudoku.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Sudoku.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Board.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Sudoku.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Board.cpp DumbBoard.cpp Sudoku.cpp Utils.cpp
+         Sudoku.cpp
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\utils.cpp(70): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(19): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(32): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\highscore.cpp(42): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\highscore.cpp(49): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\highscore.cpp(59): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\sudoku.cpp(22): warning C4244: 'initializing' : conversion from 'time_t' to 'int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\sudoku.cpp(53): warning C4244: 'initializing' : conversion from 'time_t' to 'int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\sudoku.cpp(93): warning C4018: '<' : signed/unsigned mismatch
          Board.cpp
      1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\utils.cpp(70): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
      1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(19): warning C4018: '<' : signed/unsigned mismatch
@@ -12,19 +22,20 @@
                  c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\board.cpp(18) : definition of 'y' ignored
                  c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\board.cpp(17) : definition of 'y' used
      1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\board.cpp(118): warning C4244: 'argument' : conversion from 'double' to '__w64 int', possible loss of data
-     1>c:\program files (x86)\microsoft visual studio 11.0\vc\include\utility(182): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
-                 c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\board.cpp(178) : see reference to function template instantiation 'std::pair<_Ty1,_Ty2>::pair<DumbBoard,int>(std::pair<_Ty1,int> &&,void **)' being compiled
-                 with
-                 [
-                     _Ty1=DumbBoard,
-                     _Ty2=bool
-                 ]
-                 c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\board.cpp(178) : see reference to function template instantiation 'std::pair<_Ty1,_Ty2>::pair<DumbBoard,int>(std::pair<_Ty1,int> &&,void **)' being compiled
-                 with
-                 [
-                     _Ty1=DumbBoard,
-                     _Ty2=bool
-                 ]
+         Generating Code...
+         Compiling...
+         DumbBoard.cpp
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(19): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(32): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\dumbboard.cpp(9): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\dumbboard.cpp(82): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\dumbboard.cpp(86): warning C4553: '==' : operator has no effect; did you intend '='?
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\dumbboard.cpp(188): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\dumbboard.cpp(189): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\dumbboard.cpp(216): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         Utils.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Debug\Sudoku.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Debug\Sudoku.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Debug\Sudoku.lib" /MACHINE:X86 Debug\Board.obj
          Debug\DumbBoard.obj
@@ -41,4 +52,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.34
+Time Elapsed 00:00:14.23
