@@ -130,10 +130,10 @@ int _tmain(int argc, _TCHAR* argv[])
 			Sudoku(0.5);
 		}else if(in == "3"){
 			Utils::cls();
-			Sudoku(0.75);
+			Sudoku(0.6);
 		}else{
 			Utils::cls();
-			Sudoku(0.9);
+			Sudoku(0.75);
 		}
 	}
 

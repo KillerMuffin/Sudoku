@@ -28,10 +28,13 @@ private:
 	void printLine(int size, int color);
 	void printCell(char c, int line, int cc);
 
-	void generateBoard();
+	void seed();
+	void removeRandom(double percent);
+	void findSingleSolution(int max_remove);
+
 	void genChunk(int offset_x, int offset_y);
 
-	pair<DumbBoard, bool> solve(DumbBoard b);
+	pair<DumbBoard, int> solve(DumbBoard b);
 
 	map<int, vector<int>> populateVector();
 };

@@ -8,7 +8,9 @@ Board::Board(int size, double difficulty) : DumbBoard(size){
 	srand(time(NULL));
 	this->size = size;
 	this->difficulty = difficulty;
-	generateBoard();
+
+	seed();
+	findSingleSolution((size * size) * difficulty);
 }
 
 //Check if a value can be put in a square (only checks rows and cols)
@@ -81,7 +83,7 @@ void Board::printCell(char c, int line, int cc){
 }
 
 //Generate a board
-void Board::generateBoard(){
+void Board::seed(){
 	//Populate a vector with numbers 1 to 9
 	vector<int> nums;
 	for(int i = 1; i <= size; i++){
@@ -109,11 +111,30 @@ void Board::generateBoard(){
 		}
 		pi.nextRow();
 	}
-
+}
+void Board::removeRandom(double percent){
 	//Shuffle and remove some percentage of the pieces
 	random_shuffle(pieces.begin(), pieces.end());
-	pieces.erase(pieces.begin(), pieces.begin() + (pieces.size() * difficulty));
+	pieces.erase(pieces.begin(), pieces.begin() + (pieces.size() * percent));
 }
+
+void Board::findSingleSolution(int max_remove){
+	random_shuffle(pieces.begin(), pieces.end());
+
+	int removed = 0;
+	int solve_amount = 0;
+
+	while(solve_amount < 2 && removed <= max_remove){
+		pieces.erase(pieces.begin(), pieces.begin() + 1);
+		removed++;
+
+		pair<DumbBoard, int> solution = solve(clone());
+		if(solution.second > 1){
+			return;
+		}
+	}
+}
+
 //Generate a chunk (3x3 grid) of the board
 void Board::genChunk(int offset_x, int offset_y){
 	vector<int> nums;
@@ -144,9 +165,9 @@ map<int, vector<int>> Board::populateVector(){
 	return r;
 }
 
-pair<DumbBoard, bool> Board::solve(DumbBoard db){
+pair<DumbBoard, int> Board::solve(DumbBoard db){
 	if(db.complete()){
-		return pair<DumbBoard, bool>(db, true);
+		return pair<DumbBoard, int>(db, 1);
 	}else{
 		for(int x = 0; x < size; x++){
 			for(int y = 0; y < size; y++){
@@ -166,5 +187,5 @@ pair<DumbBoard, bool> Board::solve(DumbBoard db){
 		}
 	}
 
-	return pair<DumbBoard, bool>(db, false);
+	return pair<DumbBoard, int>(db, 0);
 }
