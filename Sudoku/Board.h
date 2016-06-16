@@ -36,7 +36,6 @@ private:
 
 	void seed();
 	void removeRandom(double percent);
-	void findSingleSolution(int max_remove);
 
 	pair<DumbBoard, int> solve(DumbBoard b);
 };

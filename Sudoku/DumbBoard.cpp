@@ -167,7 +167,7 @@ bool DumbBoard::legalPut(int x, int y, int v){
 bool DumbBoard::usedInColumn(int y, int v){
 	for(int x = 0; x < size; x++){
 		Piece * p = getAt(x, y);
-		if((p != nullptr) && (p->value = v)){
+		if((p != nullptr) && (p->value == v)){
 			return true;
 		}
 	}
@@ -177,7 +177,7 @@ bool DumbBoard::usedInColumn(int y, int v){
 bool DumbBoard::usedInRow(int x, int v){
 	for(int y = 0; y < size; y++){
 		Piece * p = getAt(x, y);
-		if((p != nullptr) && (p->value = v)){
+		if((p != nullptr) && (p->value == v)){
 			return true;
 		}
 	}
@@ -185,13 +185,13 @@ bool DumbBoard::usedInRow(int x, int v){
 	return false;
 }
 bool DumbBoard::usedInGrid(int x, int y, int v){
-	int gx = floor(x/3)*3;
-	int gy = floor(y/3)*3;
+	int gx = floorf(x/3)*3;
+	int gy = floorf(y/3)*3;
 
 	for(int x = 0; x < size/3; x++){
 		for(int y = 0; y < size/3; y++){
-			Piece * p = getAt((gx*3)+x, (gy*3)+y);
-			if((p != nullptr) && (p->value = v)){
+			Piece * p = getAt(gx+x, gy+y);
+			if((p != nullptr) && (p->value == v)){
 				return true;
 			}
 		}
