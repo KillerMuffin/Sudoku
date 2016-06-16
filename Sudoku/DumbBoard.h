@@ -44,6 +44,7 @@ public:
 	//Find a blank position
 	Position findBlank();
 
+	//Clone the DumbBoard
 	DumbBoard clone();
 private:
 	bool rowComplete(int y);

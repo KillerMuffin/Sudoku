@@ -27,8 +27,6 @@ public:
 
 	Board(int size, double difficulty);
 
-	bool canPut(int x, int y, int value);
-
 	void print();
 private:
 	void printLine(int size, int color);

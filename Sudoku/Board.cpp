@@ -9,29 +9,18 @@ Board::Board(int size, double difficulty) : DumbBoard(size){
 	this->size = size;
 	this->difficulty = difficulty;
 
+	//Seed the board
 	seed();
+	//Solve the board
 	pair<DumbBoard, int> so = solve(clone());
 	pieces = so.first.pieces;
 
+	//Remove a percentage of the boards pieces
 	removeRandom(difficulty);
+	//Set all remaining pieces to be locked
 	for(int i = 0; i < pieces.size(); i++){
 		pieces[i].locked = true;
 	}
-}
-
-//Check if a value can be put in a square (only checks rows and cols)
-bool Board::canPut(int x, int y, int value){
-	for(int y = 0; y < size; y++){
-		if(getVAt(x, y) == value){
-			return false;
-		}
-	}
-	for(int x = 0; x < size; x++){
-		if(getVAt(x, y) == value){
-			return false;
-		}
-	}
-	return true;
 }
 
 //Prints the board
@@ -67,6 +56,7 @@ void Board::print(){
 	//Print the last line
 	Utils::changeColor(10);
 	cout << " |" << endl;
+	//Reset color
 	Utils::changeColor(15);
 }
 //Print a line of size <size> and color <color>
@@ -76,6 +66,7 @@ void Board::printLine(int size, int color){
 		cout << '-';
 	}
 	cout << endl;
+	//Reset color
 	Utils::changeColor(15);
 }
 //Print a cell ( | c )
@@ -90,12 +81,15 @@ void Board::printCell(char c, int line, int cc){
 
 //Generate a board
 void Board::seed(){
+	//Populate vector with 1 to 9
 	vector<int> nums;
 	for(int i = 1; i <= 9; i++){
 		nums.push_back(i);
 	}
+	//Shuffles nums
 	random_shuffle(nums.begin(), nums.end());
 
+	//Fill chunk with the values of nums
 	int index = 0;
 	for(int x = 0; x < 3; x++){
 		for(int y = 0; y < 3; y++){
@@ -113,22 +107,30 @@ void Board::removeRandom(double percent){
 pair<DumbBoard, int> Board::solve(DumbBoard db){
 	//Find the next blank piece
 	Position p = db.findBlank();
+	//If no blank pieces then board is solved
 	if(p.x == -1 && p.y == -1){
 		return pair<DumbBoard, int>(db, 1);
 	}
 
+	//For 1 to 9
 	for(int i = 1; i <= 9; i++){
+		//If number can be put in blank position
 		if(db.legalPut(p.x, p.y, i)){
+			//Set value
 			db.setAt(p.x, p.y, i, false);
 
+			//Recursivley solve
 			pair<DumbBoard, int> ret = solve(db);
+			//If successful pop off stack
 			if(ret.second > 0){
 				return ret;
 			}
 
+			//Reset
 			db.removeAt(p.x, p.y);
 		}
 	}
 
+	//If failed return failed
 	return pair<DumbBoard, int>(db, 0);
 }
