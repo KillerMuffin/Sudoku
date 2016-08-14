@@ -28,3 +28,17 @@
 *.out
 *.app
 Sudoku.opensdf
+
+Debug/Sudoku.exe
+Sudoku/Debug/
+Sudoku/Sudoku.vcxproj
+Sudoku/Sudoku.vcxproj.filters
+Sudoku.opensdf
+Sudoku.sdf
+Sudoku.sln
+Sudoku.v11.suo
+Debug/
+*.ipch
+Sudoku/ReadMe.txt
+*.fml
+
