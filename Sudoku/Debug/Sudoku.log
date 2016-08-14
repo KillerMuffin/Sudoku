@@ -1,17 +1,50 @@
-﻿Build started 16/06/2016 10:55:51 PM.
-     1>Project "C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Sudoku\Sudoku.vcxproj" on node 2 (Build target(s)).
+﻿Build started 14/08/2016 1:11:45 PM.
+     1>Project "C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Sudoku\Sudoku.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Sudoku.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Board.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\Sudoku.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\Sudoku.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Board.cpp DumbBoard.cpp Highscore.cpp Piece.cpp PIt.cpp Position.cpp PotentialValue.cpp Sudoku.cpp Utils.cpp
+         Utils.cpp
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\utils.cpp(70): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+         Sudoku.cpp
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\utils.cpp(70): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(19): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(32): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\highscore.cpp(42): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\highscore.cpp(49): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\highscore.cpp(59): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\sudoku.cpp(22): warning C4244: 'initializing' : conversion from 'time_t' to 'int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\sudoku.cpp(53): warning C4244: 'initializing' : conversion from 'time_t' to 'int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\sudoku.cpp(93): warning C4018: '<' : signed/unsigned mismatch
+         PotentialValue.cpp
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(19): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(32): warning C4018: '<' : signed/unsigned mismatch
+         Position.cpp
+         PIt.cpp
+         Piece.cpp
+         Highscore.cpp
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\utils.cpp(70): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\highscore.cpp(42): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\highscore.cpp(49): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\highscore.cpp(59): warning C4018: '<' : signed/unsigned mismatch
+         DumbBoard.cpp
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(19): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(32): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\dumbboard.cpp(9): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\dumbboard.cpp(40): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\dumbboard.cpp(143): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\dumbboard.cpp(143): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\dumbboard.cpp(144): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\dumbboard.cpp(144): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\dumbboard.cpp(171): warning C4018: '<' : signed/unsigned mismatch
          Board.cpp
      1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\utils.cpp(70): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
      1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(19): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\potentialvalue.cpp(32): warning C4018: '<' : signed/unsigned mismatch
      1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\board.cpp(8): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
-     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\board.cpp(17): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\board.cpp(30): warning C4258: 'y' : definition from the for loop is ignored; the definition from the enclosing scope is used
-                 c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\board.cpp(24) : definition of 'y' ignored
-                 c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\board.cpp(23) : definition of 'y' used
-     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\board.cpp(109): warning C4244: 'argument' : conversion from 'double' to '__w64 int', possible loss of data
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\board.cpp(21): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\benmc\documents\visual studio 2012\projects\sudoku\sudoku\board.cpp(103): warning C4244: 'argument' : conversion from 'double' to '__w64 int', possible loss of data
+         Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Debug\Sudoku.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Debug\Sudoku.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Debug\Sudoku.lib" /MACHINE:X86 Debug\Board.obj
          Debug\DumbBoard.obj
@@ -24,8 +57,8 @@
          Debug\Sudoku.obj
          Debug\Utils.obj
          Sudoku.vcxproj -> C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Debug\Sudoku.exe
-     1>Done Building Project "C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Sudoku\Sudoku.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\benmc\Documents\Visual Studio 2012\Projects\Sudoku\Sudoku\Sudoku.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:05.06
+Time Elapsed 00:00:30.53

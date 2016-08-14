@@ -26,48 +26,6 @@ bool DumbBoard::setAt(int x, int y, int value, bool locked){
 		Piece n = Piece(x, y, value);
 		n.locked = locked;
 		pieces.push_back(n);
-		
-		//Get reference to piece
-		Piece * c = &(pieces[pieces.size()-1]);
-		//Get left position if not at top left
-		if(x != 0 && y != 0){
-			Piece * l;
-			if(x != 0){
-				//If can move back one, get l from position x-1
-				l = getAt(x-1,y);
-			}else{
-				//If cannot move back one, move up a row and get from right
-				l = getAt(size-1,y-1);
-			}
-			//Link pieces
-			if(l != nullptr){
-				l->right = c;
-				c->left = l;
-			}
-		}else{
-			//If the position is at the top left, loop to right
-			Piece * r = getAt(size - 1, size - 1);
-			if(r != nullptr){
-				r->right = c;
-				c->left = r;
-			}
-		}
-		//Get right position if not at bottom right
-		if(x != size-1 && y != size-1){
-			Piece * r;
-			if(x != size-1){
-				//If can move forward one, get l from position x+1
-				r = getAt(x+1,y);
-			}else{
-				//If cannot move forward one, move down a row and get from left
-				r = getAt(0,y+1);
-			}
-			//Link pieces
-			if(r != nullptr){
-				r->left = c;
-				c->right = r;
-			}
-		}
 	}else{
 		if(!p->locked){
 			p->value = value;
@@ -81,9 +39,6 @@ bool DumbBoard::setAt(int x, int y, int value, bool locked){
 void DumbBoard::removeAt(int x, int y){
 	for(int i = 0; i < pieces.size(); i++){
 		if(pieces[i].x == x && pieces[i].y == y){
-			//Remove linked references
-			pieces[i].left->right = nullptr;
-			pieces[i].right->left == nullptr;
 			//Erase from vector
 			pieces.erase(pieces.begin() + i);
 			return;
