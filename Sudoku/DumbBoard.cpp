@@ -47,11 +47,9 @@ void DumbBoard::removeAt(int x, int y){
 }
 
 bool DumbBoard::complete(){
-	for(int x = 0; x < size; x++){
-		for(int y = 0; y < size; y++){
-			if(!rowComplete(y) || !columnComplete(x)){
-				return false;
-			}
+	for(int i = 0; i < size; i++){
+		if(!rowComplete(i) || !columnComplete(i)){
+			return false;
 		}
 	}
 
